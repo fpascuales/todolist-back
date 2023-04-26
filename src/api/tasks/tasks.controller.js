@@ -2,10 +2,14 @@ const Task = require("./tasks.model");
 
 const createTask = async (req, res, next) => {
     try {
-        req.body.category = "Pendiente";
-        const newTask = await new Task(req.body)
-        await newTask.save();
-        return res.json(newTask);
+        const actualDate = new Date();
+        const dueDate = new Date(req.body.dueDate);
+        if(dueDate.getTime() >= actualDate.getTime()){
+            req.body.category = "Pendiente";
+            const newTask = await new Task(req.body)
+            await newTask.save();
+            return res.json(newTask);
+        }
     } catch (error) {
         return next(error);
     }
