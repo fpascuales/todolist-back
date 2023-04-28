@@ -29,10 +29,27 @@ const login = async (req, res, next) => {
         return next(error);
     }
 }
-
-//METER UN GETALLUSER PARA PODER SACAR UN SELECT A LA HORA DE ASIGNAR TAREA A UN USUARIO. TAREAS TENDRÁ EL USUARIO CREADOR Y EL ASIGNADO
+const getAllUsers = async (req, res, next) => {
+    try {
+        const users = await User.find();
+        return res.status(202).json(users);
+    } catch (error) {
+        return next(error);
+    }
+}
+const getUsersById = async (req, res, next) => {
+    try {
+        const { idUser } = req.params;
+        const user = await User.findById(idUser);
+        return res.status(202).json(user);
+    } catch (error) {
+        return next(error);
+    }
+}
 
 module.exports = {
     signUp,   
-    login
+    login,
+    getAllUsers,
+    getUsersById
 }

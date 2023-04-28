@@ -4,7 +4,7 @@ const taskSchema = new mongoose.Schema(
     {
        name: {type: String, required: true, trim: true},
        assignment: {type: mongoose.Types.ObjectId, ref: 'users'},
-       category: {type: String, enum: ['Activa', 'Pausada', 'Completada', 'Pendiente']},
+       category: {type: String, enum: ['Activa', 'Pausada', 'Completada', 'Pendiente'], required: true},
        dueDate: {type: Date, required: true}
     },
     {
