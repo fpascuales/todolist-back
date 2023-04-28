@@ -30,6 +30,8 @@ const login = async (req, res, next) => {
     }
 }
 
+//METER UN GETALLUSER PARA PODER SACAR UN SELECT A LA HORA DE ASIGNAR TAREA A UN USUARIO. TAREAS TENDRÁ EL USUARIO CREADOR Y EL ASIGNADO
+
 module.exports = {
     signUp,   
     login
