@@ -22,6 +22,15 @@ const getAllTasks = async (req, res, next) => {
         return next(error);
     }
 }
+const getTaskById = async (req, res, next) => {
+    try {
+        const { idTask } = req.params;
+        const task = await Task.findById(idTask);
+        return res.json(task);
+    } catch (error) {
+        return next(error);
+    }
+}
 const updateTask = async (req, res, next) => {
     try {
         const { idTask } = req.params;
@@ -44,6 +53,7 @@ const deleteTask = async (req, res, next) => {
 module.exports = {
     createTask,
     getAllTasks,
+    getTaskById,
     updateTask,
     deleteTask
 }
